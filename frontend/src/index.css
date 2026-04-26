@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Oswald:wght@500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-dark text-light font-body m-0 p-0 overflow-x-hidden;
+    cursor: none;
+  }
+  ::selection {
+    background: #C8FF00;
+    color: #0D0D0D;
+  }
+}
+
+/* ─── Lenis smooth scroll ─── */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0D0D0D; }
+::-webkit-scrollbar-thumb { background: #C8FF00; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #a8d900; }
+
+/* ─── Organic squiggle SVG background (dark olive) ─── */
+.squiggle-bg-dark {
+  background-color: #1A1F10;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%232A3318' stroke-width='1.5'%3E%3Cpath d='M100 200 Q150 100 250 180 Q350 260 300 350 Q250 440 350 500 Q450 560 400 650'/%3E%3Cpath d='M500 100 Q550 200 480 280 Q410 360 480 440 Q550 520 500 620'/%3E%3Cpath d='M50 400 Q100 300 200 380 Q300 460 250 550 Q200 640 300 700'/%3E%3Cpath d='M600 200 Q650 300 580 380 Q510 460 600 540 Q690 620 640 720'/%3E%3Cpath d='M700 50 Q720 150 660 220 Q600 290 680 370 Q760 450 700 530'/%3E%3Cpath d='M200 50 Q180 150 260 210 Q340 270 280 360 Q220 450 310 520'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 800px 800px;
+}
+
+/* ─── Organic squiggle SVG background (cream) ─── */
+.squiggle-bg-cream {
+  background-color: #F0EDE6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23D8D4CD' stroke-width='1.5'%3E%3Cpath d='M100 200 Q150 100 250 180 Q350 260 300 350 Q250 440 350 500 Q450 560 400 650'/%3E%3Cpath d='M500 100 Q550 200 480 280 Q410 360 480 440 Q550 520 500 620'/%3E%3Cpath d='M50 400 Q100 300 200 380 Q300 460 250 550 Q200 640 300 700'/%3E%3Cpath d='M600 200 Q650 300 580 380 Q510 460 600 540 Q690 620 640 720'/%3E%3Cpath d='M700 50 Q720 150 660 220 Q600 290 680 370 Q760 450 700 530'/%3E%3Cpath d='M200 50 Q180 150 260 210 Q340 270 280 360 Q220 450 310 520'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 800px 800px;
+}
+
+/* ─── Marquee ─── */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+}
+.marquee-track-slow {
+  display: inline-flex;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+.marquee-track-reverse {
+  display: inline-flex;
+  animation: marquee-reverse 30s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ─── Cart drawer overlay ─── */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+  backdrop-filter: blur(4px);
+}
+
+/* ─── Admin sidebar ─── */
+.admin-sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background: #111611;
+  border-right: 1px solid rgba(200,255,0,0.1);
+}
+
+/* ─── Store promo bar ─── */
+.promo-bar {
+  background: #C8FF00;
+  color: #0D0D0D;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 10px 16px;
+}
+
+/* ─── Shipping progress bar ─── */
+.shipping-progress {
+  height: 6px;
+  background: #2A3318;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.shipping-progress-fill {
+  height: 100%;
+  background: #C8FF00;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+/* ─── Status badge ─── */
+.status-pending   { @apply bg-yellow-500/20 text-yellow-400 border border-yellow-500/30; }
+.status-processing { @apply bg-blue-500/20 text-blue-400 border border-blue-500/30; }
+.status-shipped   { @apply bg-lime/20 text-lime border border-lime/30; }
+.status-delivered { @apply bg-green-500/20 text-green-400 border border-green-500/30; }
+.status-cancelled { @apply bg-red-500/20 text-red-400 border border-red-500/30; }
+
+/* ─── Hover lift ─── */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(200,255,0,0.15);
+}
+
+/* ─── Magnetic btn ─── */
+.btn-lime {
+  background: #C8FF00;
+  color: #0D0D0D;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-lime:hover {
+  background: #A8D900;
+  transform: scale(1.03);
+}
+
+/* ─── Text stroke ─── */
+.text-stroke {
+  -webkit-text-stroke: 2px #C8FF00;
+  color: transparent;
+}
+.text-stroke-white {
+  -webkit-text-stroke: 2px #F0EDE6;
+  color: transparent;
+}
+
+/* ─── Noise texture overlay ─── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.05;
+}
+
+/* ─── Custom cursor ─── */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #C8FF00;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s;
+}
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(200,255,0,0.6);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
+}
+
+/* ─── Notched Card ─── */
+.notched-card-container {
+  position: relative;
+  padding: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 40px), 
+    calc(100% - 110px) calc(100% - 40px), 
+    calc(100% - 140px) 100%, 
+    0 100%
+  );
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notched-card-container.highlight {
+  background: #C8FF00;
+  box-shadow: 0 0 30px rgba(200, 255, 0, 0.2);
+  z-index: 10;
+}
+
+.notched-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #111611;
+  border-radius: 11px;
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 39px), 
+    calc(100% - 109px) calc(100% - 39px), 
+    calc(100% - 139px) 100%, 
+    0 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.notched-tab-content {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 140px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: white;
+  z-index: 20;
+}
+
+.notched-tab-year {
+  color: #C8FF00;
+  margin-left: 8px;
+}
