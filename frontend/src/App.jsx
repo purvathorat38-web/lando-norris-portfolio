@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'https://lando-norris-portfolio.onrender.com';
 
 // ── Visitor Tracker ───────────────────────────────────────────────────────────
 function TrackVisitor() {
