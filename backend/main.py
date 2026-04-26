@@ -13,10 +13,7 @@ app = FastAPI(title="Lando Norris Portfolio API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://lando-norris-portfolio.onrender.com",
-        "http://localhost:5173"
-    ],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
